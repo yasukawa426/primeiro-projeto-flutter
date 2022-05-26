@@ -14,17 +14,32 @@ class MyApp extends StatelessWidget {
   //o metodo build é rodado td vez q o app MaterialApp vai renderizar
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Bem Vindo ao Flutter'),
         ),
-        body: Center(
-          child: Text(wordPair.asPascalCase),
+        body: const Center(
+          child: RandomWords(),
         ),
       ),
     );
+  }
+}
+
+class RandomWords extends StatefulWidget {
+  const RandomWords({Key? key}) : super(key: key);
+
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+//uma classe generica de state feita para a nossa classe RandomWords
+class _RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase);
   }
 }
