@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme( //configuração do tema da barra
           backgroundColor: Colors.white, //o fundo ta branco
           foregroundColor: Colors.black,
+          shadowColor: Colors.purple, //a cor das sombras
+          elevation: 3, //define o tamanho das sombras
         ),
       ),
       home: const RandomWords(),
