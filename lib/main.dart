@@ -14,16 +14,9 @@ class MyApp extends StatelessWidget {
   //o metodo build é rodado td vez q o app MaterialApp vai renderizar
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Gerador de nome para Startup',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Gerador de nome para Startup'),
-        ),
-        body: const Center(
-          child: RandomWords(),
-        ),
-      ),
+      home: RandomWords(),
     );
   }
 }
@@ -46,7 +39,18 @@ class _RandomWordsState extends State<RandomWords> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Scaffold(
+      appBar: AppBar( //app bar é tipo um navbar
+        title: const Text('Gerador de nome para Startup'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.list), //adiciona um icone de lista
+            onPressed: _pushSaved,  //executa essa função ao apertar
+            tooltip: 'Saved Suggestions',
+          ),
+        ],
+      ),
+    body: ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
           // a call back itemBuilder é chama uma vez por par sugerido e coloca cada sugestao em uma coluna ListTile. Para colunas pares, a função coloca uma coluna ListTile para o par. Para impar, a função coloca um Divider para visualmente separar as
@@ -70,7 +74,10 @@ class _RandomWordsState extends State<RandomWords> {
             ),
             trailing: Icon(
                 //trailing é algo q vai ser mostrado dps do titulo
-                alreadySaved ? Icons.favorite : Icons.favorite_border, //se ta no alreadySaved, o icone vai ser um coração cheio vermelho
+                alreadySaved
+                    ? Icons.favorite
+                    : Icons
+                        .favorite_border, //se ta no alreadySaved, o icone vai ser um coração cheio vermelho
                 color: alreadySaved ? Colors.red : null,
                 semanticLabel: alreadySaved ? 'Remove from saved' : 'Save'),
             onTap: () {
@@ -87,6 +94,11 @@ class _RandomWordsState extends State<RandomWords> {
               });
             },
           );
-        });
+        })
+    );
+  }
+
+  void _pushSaved(){
+
   }
 }
