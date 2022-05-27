@@ -14,9 +14,15 @@ class MyApp extends StatelessWidget {
   //o metodo build é rodado td vez q o app MaterialApp vai renderizar
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Gerador de nome para Startup',
-      home: RandomWords(),
+      theme: ThemeData(//configuração do tema
+        appBarTheme: const AppBarTheme( //configuração do tema da barra
+          backgroundColor: Colors.white, //o fundo ta branco
+          foregroundColor: Colors.black,
+        ),
+      ),
+      home: const RandomWords(),
     );
   }
 }
