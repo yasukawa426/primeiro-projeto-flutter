@@ -69,10 +69,23 @@ class _RandomWordsState extends State<RandomWords> {
               style: _biggerFont,
             ),
             trailing: Icon(
-              alreadySaved ? Icons.favorite : Icons.favorite_border,
-              color: alreadySaved ? Colors.red : null,
-              semanticLabel: alreadySaved ? 'Remove from saved' : 'Save'
-            ),
+                //trailing é algo q vai ser mostrado dps do titulo
+                alreadySaved ? Icons.favorite : Icons.favorite_border,
+                color: alreadySaved ? Colors.red : null,
+                semanticLabel: alreadySaved ? 'Remove from saved' : 'Save'),
+            onTap: () {
+              //executa quando o icone (o list tile) é apertado
+              setState(() {
+                //notifica o frame work q o state mudou
+                if (alreadySaved) {
+                  //se ja estiver no favorito, remove do favorito
+                  _saved.remove(_suggestions[index]);
+                } else {
+                  // se n, adiciona
+                  _saved.add(_suggestions[index]);
+                }
+              });
+            },
           );
         });
   }
