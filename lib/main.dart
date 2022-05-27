@@ -34,7 +34,9 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   //uma variaves q vai controlar o tamanho da fonte
   final _biggerFont = const TextStyle(fontSize: 18);
-  //salva os pares q o usuario favoritou. Set é preferivel doq List porque não permite entradas duplicadas
+  //salva os pares q o usuario favoritou. Set é preferivel doq List porque não permite entradas duplicadas.
+  // Essa lista é atualizada td vez q o usuario clica em um par, adicionando ou removendo aquele par da lista
+  // A lista é usada pela função _pushSaved, q é chamada ao clicar no icone de lista na AppBar. 
   final _saved = <WordPair>{};
 
   @override
@@ -44,7 +46,7 @@ class _RandomWordsState extends State<RandomWords> {
           //app bar é tipo um navbar
           title: const Text('Gerador de nome para Startup'),
           actions: [
-            IconButton(
+            IconButton( //Listaaa
               icon: const Icon(Icons.list), //adiciona um icone de lista
               onPressed: _pushSaved, //executa essa função ao apertar
               tooltip: 'Saved Suggestions',
@@ -73,7 +75,7 @@ class _RandomWordsState extends State<RandomWords> {
                   _suggestions[index].asPascalCase,
                   style: _biggerFont,
                 ),
-                trailing: Icon(
+                trailing: Icon( //icone favoritos
                     //trailing é algo q vai ser mostrado dps do titulo
                     alreadySaved
                         ? Icons.favorite
@@ -98,6 +100,7 @@ class _RandomWordsState extends State<RandomWords> {
             }));
   }
 
+  //_pushSaved cria uma nova rota, coloca ela na pilha do Navigator e usa a lista _saved para criar uma lista de nomes com os favoritos do usuario
   void _pushSaved() {
     Navigator.of(context).push(
         //vai colocar (push) a rota dentro do parenteses na pilha, mostrando ela
