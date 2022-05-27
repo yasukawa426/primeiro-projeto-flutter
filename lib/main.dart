@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'Gerador de nome para Startup',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Bem Vindo ao Flutter'),
+          title: const Text('Gerador de nome para Startup'),
         ),
         body: const Center(
           child: RandomWords(),
@@ -46,15 +46,23 @@ class _RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemBuilder: (context, i) { // a call back itemBuilder é chama uma vez por par sugerido e coloca cada sugestao em uma coluna ListTile. Para colunas pares, a função coloca uma coluna ListTile para o par. Para impar, a função coloca um Divider para visualmente separar as 
-          if (i.isOdd) return const Divider(); // coloca um divisor de 1pixel de altura
+        itemBuilder: (context, i) {
+          // a call back itemBuilder é chama uma vez por par sugerido e coloca cada sugestao em uma coluna ListTile. Para colunas pares, a função coloca uma coluna ListTile para o par. Para impar, a função coloca um Divider para visualmente separar as
+          if (i.isOdd)
+            return const Divider(); // coloca um divisor de 1pixel de altura
 
           final index = i ~/ 2; //divide i por 2 e devolve um inteiro
           if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); //se chegou ao fim de pares disponiveis, gera mais 10 e adiciona na lista de sugestoes
+            _suggestions.addAll(generateWordPairs().take(
+                10)); //se chegou ao fim de pares disponiveis, gera mais 10 e adiciona na lista de sugestoes
           }
 
-          return Text(_suggestions[index].asPascalCase);
+          return ListTile( //Uma ListTile é uma coluna com altura fixa q contem texte junto com icones ou outros widgets
+            title: Text(
+              _suggestions[index].asPascalCase,
+              style: _biggerFont,
+            ),
+          );
         });
   }
 }
