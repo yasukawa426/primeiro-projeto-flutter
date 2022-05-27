@@ -41,6 +41,8 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   //uma variaves q vai controlar o tamanho da fonte
   final _biggerFont = const TextStyle(fontSize: 18);
+  //salva os pares q o usuario favoritou. Set é preferivel doq List porque não permite entradas duplicadas
+  final _saved = <WordPair>{};
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +59,19 @@ class _RandomWordsState extends State<RandomWords> {
                 10)); //se chegou ao fim de pares disponiveis, gera mais 10 e adiciona na lista de sugestoes
           }
 
-          return ListTile( //Uma ListTile é uma coluna com altura fixa q contem texte junto com icones ou outros widgets
+          //check para garantir que um par ja n foi adicionado aos favoritos
+          final alreadySaved = _saved.contains(_suggestions[index]);
+
+          return ListTile(
+            //Uma ListTile é uma coluna com altura fixa q contem texte junto com icones ou outros widgets
             title: Text(
               _suggestions[index].asPascalCase,
               style: _biggerFont,
+            ),
+            trailing: Icon(
+              alreadySaved ? Icons.favorite : Icons.favorite_border,
+              color: alreadySaved ? Colors.red : null,
+              semanticLabel: alreadySaved ? 'Remove from saved' : 'Save'
             ),
           );
         });
