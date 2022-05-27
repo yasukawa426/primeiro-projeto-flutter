@@ -70,7 +70,7 @@ class _RandomWordsState extends State<RandomWords> {
             ),
             trailing: Icon(
                 //trailing é algo q vai ser mostrado dps do titulo
-                alreadySaved ? Icons.favorite : Icons.favorite_border,
+                alreadySaved ? Icons.favorite : Icons.favorite_border, //se ta no alreadySaved, o icone vai ser um coração cheio vermelho
                 color: alreadySaved ? Colors.red : null,
                 semanticLabel: alreadySaved ? 'Remove from saved' : 'Save'),
             onTap: () {
