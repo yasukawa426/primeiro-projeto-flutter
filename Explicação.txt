@@ -1,3 +1,5 @@
 Navegação: No flutter, o "Navigator" gerencia uma pilha (stack) contendo as rotas do app. Adicionar uma rota (push) na pilha to Navigator atualizada o display para aquela rota. Tirar uma rota (popping) da filha do Navigator devolve o display para a rota anterior.
 
 Context: É um conjunto de informações que permite o widget saber onde ele está
+
+Tema: Voce pode usar o tema padrao que depende do dispositivo ou criar o seu proprio tema. O tema é configurado na classe ThemeData
