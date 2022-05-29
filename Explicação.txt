@@ -4,4 +4,4 @@ Context: É um conjunto de informações que permite o widget saber onde ele est
 
 Tema: Voce pode usar o tema padrao que depende do dispositivo ou criar o seu proprio tema. O tema é configurado na classe ThemeData
 
-StatefulWidget: A maior diferença entre ele e um StatelessWidget é que permite mudar o estado dele enquanto a aplicação roda. É necessario criar uma classe extendo "StatefulWidget" (é o widget em si) e uma extendo State (é o estado do widget, a classe q vai ser alterada dinamicamente)
+StatefulWidget: A maior diferença entre ele e um StatelessWidget é que permite mudar o estado dele enquanto a aplicação roda. É necessario criar uma classe extendo "StatefulWidget" (é o widget em si) e uma extendo State (é o estado do widget, a classe q vai ser alterada dinamicamente). Para o estado atualizar é necessario chamar o setState()
