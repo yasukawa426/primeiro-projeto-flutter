@@ -7,3 +7,7 @@ Tema: Voce pode usar o tema padrao que depende do dispositivo ou criar o seu pro
 StatefulWidget: A maior diferença entre ele e um StatelessWidget é que permite mudar o estado dele enquanto a aplicação roda. É necessario criar uma classe extendo "StatefulWidget" (é o widget em si) e uma extendo State (é o estado do widget, a classe q vai ser alterada dinamicamente). Para o estado atualizar é necessario chamar o setState()
 
 Scaffold: É um widget q facilita bastante fazer a interface. É basicamente um app pronto. https://api.flutter.dev/flutter/material/Scaffold-class.html
+
+Single render: Quando se coloca um filho dentro do outro, se utiliza um mesmo render, passando as mesmas aparencias. Um widget com single render, cria um novo render, não herdando a aparencia.
+
+Multi render: Renderiza várias coisas ao mesmo tempo. Por exemplo uma list.
